@@ -1,0 +1,13 @@
+# 本地日志文件，不提交到git仓库
+debug.log
+*.log
+
+# Python缓存文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 虚拟环境
+venv/
+env/
+ENV/
