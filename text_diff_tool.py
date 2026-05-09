@@ -141,16 +141,16 @@ class TextDiffTool:
 
         self.legend_frame = ttk.Frame(self.status_frame)
         self.legend_delete = tk.Label(
-            self.legend_frame, text="  删除  ", bg=self.colors["delete"], relief="solid", bd=1
+            self.legend_frame, text="  删除  ", bg=self.colors["delete"], relief="flat"
         )
         self.legend_insert = tk.Label(
-            self.legend_frame, text="  新增  ", bg=self.colors["insert"], relief="solid", bd=1
+            self.legend_frame, text="  新增  ", bg=self.colors["insert"], relief="flat"
         )
         self.legend_replace = tk.Label(
-            self.legend_frame, text="  修改  ", bg=self.colors["replace"], relief="solid", bd=1
+            self.legend_frame, text="  修改  ", bg=self.colors["replace"], relief="flat"
         )
         self.legend_equal = tk.Label(
-            self.legend_frame, text="  相同  ", bg=self.colors["equal"], relief="solid", bd=1
+            self.legend_frame, text="  相同  ", bg=self.colors["equal"], relief="flat"
         )
 
     def setup_layout(self):
@@ -173,9 +173,14 @@ class TextDiffTool:
         self.clear_content_btn.pack(side=tk.LEFT, padx=5)
 
         # 左侧文本框区域放在第1行第0列
+        # 左右文本框区域放在第1行，设置统一的最小宽度和高度
         self.left_frame.grid(row=1, column=0, sticky="nsew", padx=(0, 5))
-        # 右侧文本框区域放在第1行第1列
+        self.left_frame.config(width=336, height=320)
+        self.left_frame.grid_propagate(False)
+
         self.right_frame.grid(row=1, column=1, sticky="nsew", padx=(5, 0))
+        self.right_frame.config(width=336, height=320)
+        self.right_frame.grid_propagate(False)
 
         self.left_scroll.pack(side=tk.RIGHT, fill=tk.Y)
         self.left_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
